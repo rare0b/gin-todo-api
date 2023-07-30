@@ -1,0 +1,9 @@
+psql -h localhost -p 5432 -U postgres
+
+-- drop database todo;
+-- drop user todo_user;
+create database todo;
+\c todo
+create user todo_user with password 'todo_user';
+create schema todo_user;
+grant all privileges on schema todo_user to todo_user;
