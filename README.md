@@ -3,6 +3,8 @@
 ## このリポジトリについて
 Gin+GORM+PosgreSQLで作成したTodoAPIです。
 
+APIの実行イメージは[powershell_curl_test.md](powershell_curl_test.md)をご確認下さい
+
 ## 動作確認方法
 前提:<br>
 Go 1.20とPostgreSQL 15.3のインストール<br>
