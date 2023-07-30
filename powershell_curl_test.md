@@ -1,15 +1,21 @@
 ## CreateTask taskを作成
+```powershel
 curl.exe -X POST -d '"{\"title\": \"test1\"}"' http://localhost:8000/todo
 curl.exe -X POST -d '"{\"title\": \"test2\"}"' http://localhost:8000/todo
-
+```
+```powershell
 [GIN] 2023/07/31 - 00:59:17 | 204 |      8.5157ms |       127.0.0.1 | POST     "/todo"
 [GIN] 2023/07/31 - 00:59:31 | 204 |     17.6412ms |       127.0.0.1 | POST     "/todo"
+```
 
 ## GetAll すべてのtodoを取得
+```powershell
 curl http://localhost:8000/todo
-
+```
+```powershell
 [GIN] 2023/07/31 - 00:59:44 | 200 |      6.4054ms |             ::1 | GET      "/todo"
-
+```
+```powershell
 StatusCode        : 200
 StatusDescription : OK
 Content           : [{"ID":1,"CreatedAt":"2023-07-31T00:59:17.037545+09:00","UpdatedAt":"2023-07-31T00:59:17.037545+09:
@@ -29,15 +35,19 @@ InputFields       : {}
 Links             : {}
 ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 273
+```
 
-## UpdateTask taskを編集、GETを実行しUpdatedAtが更新されていることも確認
-**id:1について、titleがtest1→test3に更新**
+## UpdateTask taskを編集後GETを実行し、TitleとUpdatedAtが更新されていること
+**id:1について、titleをtest1→test3に更新**
+```powershell
 curl.exe -X PUT -d '"{\"title\": \"test3\"}"' http://localhost:8000/todo/edit/1
 curl http://localhost:8000/todo
-
+```
+```powershell
 [GIN] 2023/07/31 - 01:00:18 | 204 |      13.555ms |       127.0.0.1 | PUT      "/todo/edit/1"
 [GIN] 2023/07/31 - 01:00:38 | 200 |      2.8636ms |             ::1 | GET      "/todo"
-
+```
+```powershell
 StatusCode        : 200
 StatusDescription : OK
 Content           : [{"ID":1,"CreatedAt":"2023-07-31T00:59:17.037545+09:00","UpdatedAt":"2023-07-31T01:00:18.110072+09:
@@ -57,21 +67,28 @@ InputFields       : {}
 Links             : {}
 ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 273
+```
 
 ## UpdateTask idに一致するレコードがない場合
+```powershell
 curl.exe -X PUT -d '"{\"title\": \"test3\"}"' http://localhost:8000/todo/edit/5
-
+```
+```powershell
 [GIN] 2023/07/31 - 01:01:38 | 404 |      6.8638ms |       127.0.0.1 | PUT      "/todo/edit/5"
-
+```
+```powershell
 {}
-
+```
 ## DeleteTask タスクを削除
+```powershell
 curl.exe -X DELETE http://localhost:8000/todo/delete/2
 curl http://localhost:8000/todo
-
+```
+```powershell
 [GIN] 2023/07/31 - 01:02:54 | 204 |     18.3499ms |       127.0.0.1 | DELETE   "/todo/delete/2"
 [GIN] 2023/07/31 - 01:03:09 | 200 |     12.7057ms |             ::1 | GET      "/todo"
-
+```
+```powershell
 StatusCode        : 200
 StatusDescription : OK
 Content           : [{"ID":1,"CreatedAt":"2023-07-31T00:59:17.037545+09:00","UpdatedAt":"2023-07-31T01:00:18.110072+09:
@@ -90,10 +107,15 @@ InputFields       : {}
 Links             : {}
 ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 137
+```
 
 ## DeleteTask idに一致するレコードがない場合
+```powershell
 curl.exe -X DELETE http://localhost:8000/todo/delete/5
-
+```
+```powershell
 [GIN] 2023/07/31 - 01:03:37 | 404 |      5.4535ms |       127.0.0.1 | DELETE   "/todo/delete/5"
-
+```
+```powershell
 {}
+```
