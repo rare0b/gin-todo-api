@@ -24,7 +24,7 @@ PostgreSQLはポート5432に設定してください。<br>
    go run main.go
    ```
 1. curlコマンド等を用いて、HTTPリクエストを行います。
-   私がテストした際のコマンドやログは、powershell_curl_test.mdで確認できます。ただし、コマンドはPowershell向けであることに注意してください。
+   私がテストした際のコマンドやログは、[powershell_curl_test.md](powershell_curl_test.md)で確認できます。ただし、コマンドはPowershell向けであることに注意してください。
    GET以外のリクエストで期待されるJSONは、以下の形式です。
    ```
    { "title" : "test1" }
